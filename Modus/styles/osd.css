@@ -1,0 +1,44 @@
+.osd-panel {
+  background-color: transparent;
+}
+
+#osd-label {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#osd-value {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#progress-container {
+  border-radius: 6px;
+  min-height: 12px;
+  min-width: 150px;
+}
+
+#progress-fill {
+  background-color: @primary;
+  border-radius: 6px;
+  min-height: 8px;
+  transition: min-width 0.3s ease-in-out;
+}
+
+#progress-background {
+  background-color: @surfaceContainer;
+  border-radius: 6px;
+  min-height: 8px;
+  min-width: 150px;
+}
+
+#control-section {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: lighter(@background);
+}
+
+.osd-hidden {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}

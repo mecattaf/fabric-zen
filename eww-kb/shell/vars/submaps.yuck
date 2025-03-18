@@ -1,0 +1,15 @@
+(defvar hypr_submap_icons '{
+"window":"󱂬",
+"workspace":"󰮸",
+"media":"󱜏",
+"overview": "󰺕",
+"default":"󰌌",
+"__easymotionsubmap__": "󱖲"
+}')
+(defvar hypr_submap_names '{
+"window":"window",
+"workspace":"workspace",
+"media":"media",
+"overview": "overview",
+"__easymotionsubmap__": "leap"
+}')

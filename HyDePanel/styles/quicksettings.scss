@@ -1,0 +1,360 @@
+@use "theme.scss";
+@use "common" as common;
+@use "variable.scss";
+@use "sass:color";
+
+$slider-height: 12px;
+
+#dialog {
+  &-wrapper {
+    background-color: theme.$background-dark;
+    border-radius: variable.$radius;
+    padding: 1rem 2.5rem;
+    border: 1px solid theme.$accent-blue;
+  }
+
+  &-title {
+    @extend %title_2;
+    margin: 1rem;
+  }
+
+  &-body {
+    margin: 1rem;
+    @extend %caption_heading;
+  }
+
+  &-buttons-box {
+    margin: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  &-button {
+    @extend %caption_heading;
+    padding: 0.5rem 2.5rem;
+    border-radius: variable.$radius;
+    background-color: theme.$background;
+    color: theme.$text-main;
+    margin: 0 1rem;
+
+    &:nth-child(1):hover {
+      background-color: #4caf50;
+      color: theme.$background;
+    }
+
+    &:nth-child(2):hover {
+      background-color: #e53935;
+      color: theme.$background;
+    }
+  }
+}
+
+#quicksettings-menu {
+  min-width: variable.$quicksettings-width;
+  @include common.floating-widget;
+  @include common.spacing;
+  padding: 4pt 1pt;
+
+  .power-profile {
+    .active {
+      color: color.mix( theme.$accent-purple, black, 12%);
+    }
+
+    .power-profile-button {
+      &:hover {
+        color: theme.$accent-purple;
+      }
+    }
+  }
+
+  .quick-settings-box {
+    #user-box-grid {
+      margin-bottom: 10px;
+
+      #button-box {
+        min-width: 240px;
+        min-height: 50px;
+
+        button {
+          margin: 0 5px;
+          background-color: color.mix(
+            theme.$background,
+            white, 5%
+          );
+          border-radius: variable.$radius-large;
+          padding: common.toEm(4);
+
+          &:hover {
+            @extend %widget_hover;
+          }
+
+          &:last-child {
+            margin-right: 20px;
+          }
+        }
+      }
+
+      .user {
+        font-weight: 600;
+      }
+
+      .uptime {
+        font-size: 0.92rem;
+        border: variable.$border-width solid
+          color.mix( theme.$surface-disabled, white, 10%);
+        padding: common.toEm(3) common.toEm(10);
+        font-weight: 600;
+        border-radius: 1rem;
+      }
+    }
+
+    .section-box {
+      margin: 1.4rem 1rem;
+      margin-bottom: 0;
+    }
+
+    .quicksettings-toggle-action {
+      border-radius: variable.$radius-large 0 0 variable.$radius-large;
+
+      min-height: 35px;
+
+      &-box {
+        margin: 0 common.toEm(5);
+
+        .panel-text {
+          @extend %caption_heading;
+        }
+      }
+    }
+
+    .shortcuts-box {
+      border-radius: variable.$radius;
+      margin: 0;
+      padding: 0;
+
+      button {
+        padding: common.toEm(5);
+        border-radius: variable.$radius;
+        background-color: theme.$background;
+        color: theme.$text-main;
+        min-height: 32px;
+
+        &:hover {
+          background-color: color.mix(theme.$accent-blue, black, 4%);
+          color: theme.$background;
+        }
+      }
+    }
+
+    // Base slider box styles
+    %slider-box-base {
+      padding: common.toEm(15);
+      border-radius: variable.$radius;
+      background-color: theme.$background;
+
+      #setting-slider {
+        &-scale {
+          margin-left: 10px;
+          margin-right: 20px;
+        }
+
+        &-label {
+          font-weight: 700;
+          font-size: 12.5px;
+        }
+
+        &-button {
+          background-color: transparent;
+          padding: 0 common.toEm(2);
+        }
+      }
+    }
+
+    .slider-box-long {
+      @extend %slider-box-base;
+
+      #setting-slider {
+        @include common.slider(
+          $highlight-color: theme.$accent-blue,
+          $slider: true,
+          $min-length: 320px
+        );
+      }
+    }
+
+    .slider-box-short {
+      @extend %slider-box-base;
+
+      #setting-slider {
+        @include common.slider(
+          $highlight-color: theme.$accent-blue,
+          $slider: true,
+          $min-length: 230px
+        );
+      }
+    }
+
+    .slider-box-shorter {
+      @extend %slider-box-base;
+
+      #setting-slider {
+        @include common.slider(
+          $highlight-color: theme.$accent-blue,
+          $slider: true,
+          $min-length: 140px
+        );
+      }
+    }
+
+    #submenu {
+      margin-top: 10px;
+      min-height: 200px;
+      background-color: theme.$background-alt;
+      border-radius: variable.$radius;
+      padding: common.toEm(8);
+
+      .submenu-title-box {
+        margin-bottom: 10px;
+        padding: common.toEm(5);
+
+        .submenu-title-label {
+          margin-left: 10px;
+          @extend %caption_heading;
+        }
+      }
+
+      .submenu-item-label {
+        font-size: 13px;
+        margin-left: 5px;
+      }
+
+      .submenu-button {
+        margin: 0 common.toEm(2);
+        padding: 0 common.toEm(5);
+        border-radius: variable.$radius;
+
+        &.activated {
+          background-color: rgba(255, 255, 255, 0.15);
+          border-style: solid;
+          border-color: transparent;
+          border-bottom-style: solid;
+          border-bottom-color: rgba(255, 255, 255, 0.5);
+        }
+
+        &:hover {
+          @extend %widget_hover;
+        }
+
+        &:active {
+          background-color: theme.$text-main;
+
+          & > * {
+            color: theme.$background-dark;
+          }
+        }
+      }
+
+      #wifi-ap-button.submenu-button {
+        padding: common.toEm(7) 0;
+
+        &:hover {
+          color: theme.$accent-purple;
+        }
+      }
+
+      #bluetooth-device-box.submenu-button {
+        .submenu-button {
+          padding: common.toEm(6);
+          background-color: theme.$background-dark;
+
+          label {
+            font-size: 11px;
+            font-weight: 600;
+          }
+
+          &:hover {
+            color: theme.$accent-purple;
+          }
+        }
+      }
+
+      #scan-button {
+        &:active {
+          background-color: transparent;
+        }
+      }
+    }
+
+    #quicksettings-togglebutton {
+      .toggle-revealer {
+        border-radius: 0 variable.$radius-large variable.$radius-large 0;
+        padding: common.toEm(10) common.toEm(5);
+      }
+    }
+
+    // this is for buttons like hypridle
+
+    #quicksettings-togglebutton.quicksettings-toggler {
+      background-color: theme.$background;
+      border-radius: variable.$radius-large;
+      @extend %caption_heading;
+      padding: common.toEm(3) 0;
+      padding-left: common.toEm(10);
+
+      &.active {
+        background-color: theme.$accent-blue;
+
+        &:hover {
+          background-color: color.mix(theme.$accent-blue, black, 4%);
+        }
+
+        label {
+          color: color.mix(#000000, white, 8%);
+        }
+
+        image {
+          color: color.mix(#000000, white, 8%);
+        }
+      }
+    }
+
+    #quicksettings-togglebutton.active button image,
+    #quicksettings-togglebutton.active button label,
+    #quicksettings-togglebutton.active button {
+      background-color: theme.$accent-blue;
+      color: color.mix( #000000, white, 8%);
+      padding-left: common.toEm(1);
+      padding-right: common.toEm(4);
+    }
+
+    #quicksettings-togglebutton.active button:hover image,
+    #quicksettings-togglebutton.active button:hover label,
+    #quicksettings-togglebutton.active button:hover {
+      background-color: color.mix(theme.$accent-blue, black, 4%);
+    }
+
+    #quicksettings-togglebutton.active button:active image,
+    #quicksettings-togglebutton.active button:active label,
+    #quicksettings-togglebutton.active button:active {
+      background-color: color.mix(theme.$accent-blue, black, 10%);
+    }
+
+    #quicksettings-togglebutton button image,
+    #quicksettings-togglebutton button label,
+    #quicksettings-togglebutton button {
+      background-color: theme.$background;
+      color: theme.$text-main;
+    }
+
+    #quicksettings-togglebutton button:hover image,
+    #quicksettings-togglebutton button:hover label,
+    #quicksettings-togglebutton button:hover {
+      background-color: theme.$background;
+    }
+
+    #quicksettings-togglebutton button:active image,
+    #quicksettings-togglebutton button:active label,
+    #quicksettings-togglebutton button:active {
+      background-color: theme.$background-alt;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@use "theme.scss";
+@use "variable.scss";
+@use "common" as common;
+
+/* system tray widget*/
+#system-tray-menu {
+  padding: 0.5em 0.25em;
+  color: theme.$text-main;
+  border-radius: variable.$radius;
+  min-width: 200px;
+  min-height: 50px;
+  background-color: theme.$background-dark;
+
+  grid{
+  &>button {
+      margin: 0 0.1em;
+      padding: 0 0.15em;
+      border-radius: variable.$radius-large;
+
+      &:hover {
+        background-color: theme.$surface-disabled;
+      }
+
+      &:active {
+        background-color: theme.$text-main;
+      }
+    }
+  }
+
+
+}
+
+/* system tray widget*/
+#system-tray-widget {
+
+  .toggle-icon, .panel-icon {
+    margin: 0;
+    padding:0;
+    &.active {
+      background-color: theme.$background-alt;
+    }
+  }
+
+  separator {
+    background-color: variable.$border-color;
+    border-radius: variable.$radius;
+    margin: 8px 4px;
+    min-width: 1.2px;
+  }
+}

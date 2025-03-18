@@ -1,0 +1,32 @@
+@use "sass:color";
+@use "theme.scss";
+@use "common" as common;
+
+#power-button-menu {
+  background-color: theme.$background;
+}
+
+#power-control-button {
+  padding: common.toEm(40) common.toEm(120);
+  border-radius: 0;
+  border-color: theme.$surface-disabled;
+  text-decoration-color: theme.$text-main;
+  color: theme.$text-main;
+  background-color: theme.$background;
+  border-style: solid;
+  border-width: 1px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25%;
+
+  label {
+    margin-top: 4.5em;
+  }
+
+  &:focus,
+  &:active,
+  &:hover {
+    background-color: theme.$accent-purple;
+    outline-style: none;
+  }
+}
